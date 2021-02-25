@@ -19,12 +19,12 @@ public class Funciones {
         
     }
     public Lista leer_csv(String filepath) {
-        Lista personas = new Lista("Lista nueva");
+        Lista personas = new Lista();
         String line;
-        String peliculas_csv = "";
+        String pelicula_csv = "";
         String path = filepath;
+        //String path = "test\\cliente.csv"; Lee el csv clientes
         File file = new File(path);
-        
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -35,17 +35,20 @@ public class Funciones {
                 while ((line = br.readLine()) != null) {
                     
                     if (!line.isEmpty()) {
-                        peliculas_csv += line + "\n";
+                        pelicula_csv += line + "\n";
                     }
 
                 }
                
-                if (!"".equals(peliculas_csv)) {
-                    String[] peliculas_split = peliculas_csv.split("\n");
-                    for (int i = 0; i < peliculas_split.length ; i++) {
-                        if (!peliculas_split[i].equals("id,title,year")&& !peliculas_split[i].isEmpty()) {
-                            String[] pelicula = peliculas_split[i].split(",");
-                            personas.Insertar_final(Integer.parseInt(pelicula[1]),(pelicula[0]), Integer.parseInt(pelicula[2]));
+                if (!"".equals(pelicula_csv)) {
+                    String[] pelicula_split = pelicula_csv.split("\n");
+                    String texto=pelicula_split[0];
+                    for (int i = 0; i < pelicula_split.length ; i++) {
+                        //System.out.println(pelicula_split[0]);
+                        
+                        if (!pelicula_split[i].equals(texto)) {
+                            String[] cliente = pelicula_split[i].split(",");
+                            personas.Insertar_final(Integer.parseInt(cliente[0]),cliente[1], Integer.parseInt(cliente[2]));
 
                         }
 

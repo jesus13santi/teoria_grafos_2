@@ -15,9 +15,9 @@ public class Lista {
     private int tamano;
     private Nodo last;
     
-    public Lista(String nombre_lista){
+    public Lista(){
         this.first = null;
-        this.nombre = nombre_lista;
+        //this.nombre = nombre_lista;
         this.tamano = 0;
         this.last=null;
     }
@@ -84,7 +84,7 @@ public class Lista {
             return aux;
         }
     }
-    public void Insertar_final( int ID,String Nombre, int anio) {
+    public void Insertar_final( int ID, String Nombre, int anio) {
         Nodo nuevo = new Nodo(Nombre,ID,anio);
         if (esVacio()) {
             first = last = nuevo;

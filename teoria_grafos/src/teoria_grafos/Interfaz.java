@@ -21,6 +21,7 @@ public class Interfaz extends javax.swing.JFrame {
     public Interfaz() {
         initComponents();
     }
+    Funciones func = new Funciones();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -425,7 +426,7 @@ public class Interfaz extends javax.swing.JFrame {
             if (name.equals(csv)) {
                 jTextField2.setText(filepath);
                 JOptionPane.showMessageDialog(null, "Formato del Archivo: " + name);
-                Funciones func = new Funciones();
+                
                 Lista actores = func.leer_csv(filepath);
             } else {
                 JOptionPane.showMessageDialog(null, "El archivo debe ser de tipo csv. No " + name);
@@ -451,13 +452,14 @@ public class Interfaz extends javax.swing.JFrame {
         String filepath = f.getAbsolutePath();
         String name = filename.substring(filename.length() - 3);
         JOptionPane.showMessageDialog(null, name);
-        Funciones func = new Funciones();
+        
         Lista peliculas = func.leer_csv(filepath);
         String csv = "csv";
         if (filename.length() > 3) {
             if (name.equals(csv)) {
                 jTextField3.setText(filepath);
                 JOptionPane.showMessageDialog(null, "Formato del Archivo: " + name);
+                Lista actores = func.leer_csv(filepath);
             } else {
                 JOptionPane.showMessageDialog(null, "El archivo debe ser de tipo csv. No " + name);
             }
@@ -485,6 +487,7 @@ public class Interfaz extends javax.swing.JFrame {
             if (name.equals(csv)) {
                 jTextField4.setText(filepath);
                 JOptionPane.showMessageDialog(null, "Formato del Archivo: " + name);
+                
             } else {
                 JOptionPane.showMessageDialog(null, "El archivo debe ser de tipo csv. No " + name);
             }
