@@ -66,5 +66,57 @@ public class Funciones {
 
         return personas;
     }
+    public ListaRelacion leer_csv_2(String filepath) {
+        ListaRelacion personas = new ListaRelacion();
+        String line;
+        String pelicula_csv = "";
+        String path = filepath;
+        //String path = "test\\cliente.csv"; Lee el csv clientes
+        File file = new File(path);
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            } else {
+                file.createNewFile();
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                while ((line = br.readLine()) != null) {
+                    
+                    if (!line.isEmpty()) {
+                        pelicula_csv += line + "\n";
+                    }
+
+                }
+               
+                if (!"".equals(pelicula_csv)) {
+                    String[] pelicula_split = pelicula_csv.split("\n");
+                    String texto=pelicula_split[0];
+                    for (int i = 0; i < pelicula_split.length ; i++) {
+                        
+                        
+                        if (!pelicula_split[i].equals(texto)) {
+                            
+                            String[] pelicula = pelicula_split[i].split(",");
+                            
+                            personas.Insertar_final(Integer.parseInt(pelicula[0]),Integer.parseInt(pelicula[1]));
+                            //System.out.println(personas.Imprimir_lista());
+                        }
+
+                    }
+
+                }
+                br.close();
+                
+                JOptionPane.showMessageDialog(null, "Exitos al Leer");
+                
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Error al leer");
+
+        }
+        //System.out.println(personas.Imprimir_lista());
+        return personas;
+    }
     
 }

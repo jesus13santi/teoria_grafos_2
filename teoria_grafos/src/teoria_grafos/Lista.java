@@ -41,7 +41,7 @@ public class Lista {
     
     public Nodo proximo(Nodo valor){
         if(valor != null){
-            valor = valor.pnext;
+            valor = valor.getPnext();
             return valor;
         }else{
             return null;
@@ -49,15 +49,15 @@ public class Lista {
     }
     
     public int leer_id(Nodo valor){
-        return valor.ID;
+        return valor.getID();
     }
     
     public int leer_anio(Nodo valor){
-        return valor.anio;
+        return valor.getAnio();
     }
     
     public String leer_nombre(Nodo valor){
-        return valor.nombre;
+        return valor.getNombre();
     }
     
     public void recorrer(){
@@ -78,7 +78,7 @@ public class Lista {
             return null;
         }else{
             aux=first;
-            while(aux.pnext!=null){
+            while(aux.getPnext()!=null){
                 aux = proximo(aux);
             }
             return aux;
@@ -94,5 +94,21 @@ public class Lista {
             last = nuevo;
         }
         tamano++;
+    }
+    
+    public String Imprimir_lista() {
+        String lista_completa = "";
+        Nodo actual = first;
+        if(actual==null){
+            lista_completa="Esta vacia";
+        }
+        while (actual != null) {
+            lista_completa += actual.getID()+","+actual.getNombre()+","+actual.getAnio() + "\n";
+            actual = actual.getPnext();
+
+        }
+        //System.out.println(lista_completa);
+        return lista_completa;
+
     }
 }
