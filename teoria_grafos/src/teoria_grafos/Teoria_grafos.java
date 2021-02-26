@@ -18,6 +18,7 @@ public class Teoria_grafos {
         // TODO code application logic here
         Interfaz i = new Interfaz();
         i.setVisible(true);
+        
     }
     
 }
