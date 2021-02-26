@@ -420,7 +420,6 @@ public class Interfaz extends javax.swing.JFrame {
         String filename = f.getName();
         String filepath = f.getAbsolutePath();
         String name = filename.substring(filename.length() - 3);
-        JOptionPane.showMessageDialog(null, name);
         String csv = "csv";
         if (filename.length() > 3) {
             if (name.equals(csv)) {
@@ -451,7 +450,6 @@ public class Interfaz extends javax.swing.JFrame {
         String filename = f.getName();
         String filepath = f.getAbsolutePath();
         String name = filename.substring(filename.length() - 3);
-        JOptionPane.showMessageDialog(null, name);
         
         Lista peliculas = func.leer_csv(filepath);
         String csv = "csv";
@@ -481,7 +479,6 @@ public class Interfaz extends javax.swing.JFrame {
         String filename = f.getName();
         String filepath = f.getAbsolutePath();
         String name = filename.substring(filename.length() - 3);
-        JOptionPane.showMessageDialog(null, name);
         String csv = "csv";
         if (filename.length() > 3) {
             if (name.equals(csv)) {
