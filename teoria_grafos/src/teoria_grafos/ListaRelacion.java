@@ -116,6 +116,7 @@ public class ListaRelacion {
         return lista_completa;
 
     }
+    
 
     public void matriz_prueba() {
         int[][] matriz = new int[5][5];
@@ -206,6 +207,10 @@ public class ListaRelacion {
         }
         tamano--;
 
+    }
+    public void Vaciar() {
+        first = last = null;
+        tamano = 0;
     }
     
 

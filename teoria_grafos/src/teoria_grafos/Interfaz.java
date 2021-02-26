@@ -518,8 +518,12 @@ public class Interfaz extends javax.swing.JFrame {
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        ListaElenco elenco= new ListaElenco();
+        //elenco.Insertar_final(relacion, 0);
+        elenco=elenco.elenco(relacion);
+   
+        JOptionPane.showMessageDialog(null, elenco.Imprimir_lista());
         
-        //System.out.println(relacion.Imprimir_lista());
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
