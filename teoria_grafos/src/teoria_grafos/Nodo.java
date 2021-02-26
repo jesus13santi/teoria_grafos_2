@@ -10,10 +10,11 @@ package teoria_grafos;
  * @author Usuario
  */
 public class Nodo {
-    public Nodo pnext;
-    public String nombre;
-    public int anio;
-    public int ID;
+    private Nodo pnext;
+    private String nombre;
+    private int anio;
+    private int ID;
+
     
     public Nodo(String nombre,int ID,int anio){
         this.pnext=null;
@@ -22,9 +23,12 @@ public class Nodo {
         this.anio=anio;
     }
 
+    
+
     /**
      * @return the pnext
      */
+    
     public Nodo getPnext() {
         return pnext;
     }
@@ -77,5 +81,9 @@ public class Nodo {
     public void setID(int ID) {
         this.ID = ID;
     }
-    
+
+    /**
+     * @return the ID_actor
+     */
+
 }

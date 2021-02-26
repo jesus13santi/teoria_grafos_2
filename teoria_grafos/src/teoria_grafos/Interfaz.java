@@ -22,6 +22,10 @@ public class Interfaz extends javax.swing.JFrame {
         initComponents();
     }
     Funciones func = new Funciones();
+    Lista peliculas= new Lista();
+    Lista actores=new Lista();
+    ListaRelacion relacion=new ListaRelacion();
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -426,7 +430,9 @@ public class Interfaz extends javax.swing.JFrame {
                 jTextField2.setText(filepath);
                 JOptionPane.showMessageDialog(null, "Formato del Archivo: " + name);
                 
-                Lista actores = func.leer_csv(filepath);
+                actores = func.leer_csv(filepath);
+                
+                
             } else {
                 JOptionPane.showMessageDialog(null, "El archivo debe ser de tipo csv. No " + name);
             }
@@ -434,6 +440,7 @@ public class Interfaz extends javax.swing.JFrame {
             // whatever is appropriate in this case
             JOptionPane.showMessageDialog(null, "El archivo tiene menos de tres caracteres. ");
         }
+        System.out.println(actores.Imprimir_lista());
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -451,13 +458,13 @@ public class Interfaz extends javax.swing.JFrame {
         String filepath = f.getAbsolutePath();
         String name = filename.substring(filename.length() - 3);
         
-        Lista peliculas = func.leer_csv(filepath);
+        
         String csv = "csv";
         if (filename.length() > 3) {
             if (name.equals(csv)) {
                 jTextField3.setText(filepath);
                 JOptionPane.showMessageDialog(null, "Formato del Archivo: " + name);
-                Lista actores = func.leer_csv(filepath);
+                peliculas = func.leer_csv(filepath);
             } else {
                 JOptionPane.showMessageDialog(null, "El archivo debe ser de tipo csv. No " + name);
             }
@@ -465,8 +472,12 @@ public class Interfaz extends javax.swing.JFrame {
             // whatever is appropriate in this case
             JOptionPane.showMessageDialog(null, "El archivo tiene menos de tres caracteres. ");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+        System.out.println(peliculas.Imprimir_lista());
 
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    
+    
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
@@ -484,6 +495,8 @@ public class Interfaz extends javax.swing.JFrame {
             if (name.equals(csv)) {
                 jTextField4.setText(filepath);
                 JOptionPane.showMessageDialog(null, "Formato del Archivo: " + name);
+                relacion = func.leer_csv_2(filepath);
+                //JOptionPane.showMessageDialog(null, relacion.Imprimir_lista());
                 
             } else {
                 JOptionPane.showMessageDialog(null, "El archivo debe ser de tipo csv. No " + name);
@@ -492,10 +505,23 @@ public class Interfaz extends javax.swing.JFrame {
             // whatever is appropriate in this case
             JOptionPane.showMessageDialog(null, "El archivo tiene menos de tres caracteres. ");
         }
+        
+        
+            
+                
+           
+            
+        
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
-
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        
+        //System.out.println(relacion.Imprimir_lista());
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
