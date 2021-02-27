@@ -521,9 +521,10 @@ public class Interfaz extends javax.swing.JFrame {
         ListaElenco elenco= new ListaElenco();
         //elenco.Insertar_final(relacion, 0);
         elenco=elenco.elenco(relacion);
-        elenco.eliminarRepetidos();
-   
-        JOptionPane.showMessageDialog(null, elenco.Imprimir_lista());
+        elenco.EliminarRepetidos();
+        
+        //System.out.println(elenco.Imprimir_lista());
+        //JOptionPane.showMessageDialog(null, elenco.Imprimir_lista());
         
         
         

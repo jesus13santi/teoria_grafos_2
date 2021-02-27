@@ -77,8 +77,8 @@ public class ListaElenco {
         tamano++;
     }
 
-    public void Insertar_final(ListaAuxiliar lista, int ID_pelicula) {
-        NodoElenco nuevo = new NodoElenco(lista, ID_pelicula);
+    public void Insertar_final(ListaAuxiliar lista, int ID_pelicula,int pos) {
+        NodoElenco nuevo = new NodoElenco(lista, ID_pelicula,pos);
         if (esVacio()) {
             first = last = nuevo;
         } else {
@@ -91,12 +91,13 @@ public class ListaElenco {
 
     public ListaElenco elenco(ListaRelacion ele) {
         ListaElenco elenco_2 = new ListaElenco();
-        ListaAuxiliar auxi = new ListaAuxiliar();
+        int pos=0;
         NodoRelacion aux = ele.getFirst();
         NodoRelacion ant = ele.getFirst();
         while (aux != null) {
+            
             ant = ele.getFirst();
-            auxi.Vaciar();
+            ListaAuxiliar auxi = new ListaAuxiliar();
             while (ant != null) {
 
                 if (aux.getID_pelicula() == ant.getID_pelicula()) {
@@ -106,13 +107,15 @@ public class ListaElenco {
                 ant = ant.getPnext();
 
             }
-            System.out.println(auxi.Imprimir_lista());
-            elenco_2.Insertar_final(auxi, aux.getID_pelicula());
+            pos=pos+1;
+            elenco_2.Insertar_final(auxi, aux.getID_pelicula(),pos);
+            //System.out.println(auxi.Imprimir_lista());
+
             aux = aux.getPnext();
 
         }
-
-        //System.out.println(elenco_2.Imprimir_lista());
+        elenco_2.EliminarRepetidos();
+        System.out.println(elenco_2.Imprimir_lista());
         return elenco_2;
     }
     
@@ -157,6 +160,65 @@ public class ListaElenco {
         }
     }
 
+    public void Eliminar_principio() {
+        first = first.getPnext();
+        tamano--;
+
+    }
+
+    public NodoElenco Anterior(NodoElenco posicion) {
+        NodoElenco aux = first;
+        NodoElenco ant = first;
+
+        boolean encontrado = false;
+
+        if (aux == posicion) {
+            return null;
+        } else {
+            while (aux != null) {
+                aux = aux.getPnext();
+                if (aux == posicion) {
+                    encontrado = true;
+                    return ant;
+                } else {
+                    ant = ant.getPnext();
+                }
+            }
+        }
+        return null;
+    }
+
+    public void EliminarRepetidos() {
+        ListaElenco elenco_2 = new ListaElenco();
+        //ListaElenco auxi = new ListaElenco();
+        NodoElenco aux = first;
+        NodoElenco ant = aux.getPnext();
+        while (aux != null) {
+            ant = aux.getPnext();
+            while (ant != null) {
+                if (aux.getID_pelicula() == ant.getID_pelicula()) {
+                    if (ant == last) {
+                        Anterior(ant).setPnext(null);
+                        setTamano(getTamano() - 1);
+                    } else {
+                        Anterior(ant).setPnext(ant.getPnext());
+                        setTamano(getTamano() - 1);
+
+                    }
+
+                }
+                ant = ant.getPnext();
+
+            }
+            aux=aux.getPnext();
+            
+
+        }
+
+        
+
+    }
+
     public String Imprimir_lista() {
         String lista_completa = "";
         NodoElenco actual = first;
@@ -164,7 +226,7 @@ public class ListaElenco {
             lista_completa = "Esta vacia";
         }
         while (actual != null) {
-            lista_completa += actual.getLista().Imprimir_lista() + "," + actual.getID_pelicula() + "\n";
+            lista_completa += actual.getLista().Imprimir_lista() + "," + actual.getID_pelicula() + ","+actual.getPos()+"\n";
             actual = actual.getPnext();
 
         }
