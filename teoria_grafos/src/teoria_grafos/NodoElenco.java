@@ -77,4 +77,20 @@ public class NodoElenco {
         this.Pos = Pos;
     }
     
+    public boolean elencosAdyacentes(ListaAuxiliar la){
+        NodoAuxiliar aux = this.lista.getFirst();
+        boolean esAdyacente = false;
+        while(aux != null){
+            NodoAuxiliar aux2 = la.getFirst();
+            while(aux2 != null){
+                if(aux.getID_actor() == aux2.getID_actor()){
+                    esAdyacente = true;
+                }
+                aux2 = aux2.getPnext();
+            }
+            aux = aux.getPnext();
+        }
+        return esAdyacente;
+    }
+    
 }

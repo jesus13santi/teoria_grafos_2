@@ -506,14 +506,6 @@ public class Interfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El archivo tiene menos de tres caracteres. ");
         }
         
-        
-            
-                
-           
-            
-        
-        
-        
     }//GEN-LAST:event_jButton3ActionPerformed
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -522,6 +514,11 @@ public class Interfaz extends javax.swing.JFrame {
         //elenco.Insertar_final(relacion, 0);
         elenco=elenco.elenco(relacion);
         elenco.EliminarRepetidos();
+        elenco.asignarPosicion();
+        elenco.Imprimir_lista();
+        Grafo g = new Grafo(elenco.getTamano());
+        g.agregarAristas(elenco);
+        g.imprimir();
         
         //System.out.println(elenco.Imprimir_lista());
         //JOptionPane.showMessageDialog(null, elenco.Imprimir_lista());
