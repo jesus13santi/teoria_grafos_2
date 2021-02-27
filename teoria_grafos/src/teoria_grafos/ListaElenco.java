@@ -67,8 +67,8 @@ public class ListaElenco {
         return first == null;
     }
 
-    public void Insertar_final(ListaAuxiliar lista, int ID_pelicula) {
-        NodoElenco nuevo = new NodoElenco(lista, ID_pelicula);
+    public void Insertar_final(ListaAuxiliar lista, int ID_pelicula,int pos) {
+        NodoElenco nuevo = new NodoElenco(lista, ID_pelicula,pos);
         if (esVacio()) {
             first = last = nuevo;
         } else {
@@ -81,10 +81,11 @@ public class ListaElenco {
 
     public ListaElenco elenco(ListaRelacion ele) {
         ListaElenco elenco_2 = new ListaElenco();
-
+        int pos=0;
         NodoRelacion aux = ele.getFirst();
         NodoRelacion ant = ele.getFirst();
         while (aux != null) {
+            
             ant = ele.getFirst();
             ListaAuxiliar auxi = new ListaAuxiliar();
             while (ant != null) {
@@ -96,7 +97,8 @@ public class ListaElenco {
                 ant = ant.getPnext();
 
             }
-            elenco_2.Insertar_final(auxi, aux.getID_pelicula());
+            pos=pos+1;
+            elenco_2.Insertar_final(auxi, aux.getID_pelicula(),pos);
             //System.out.println(auxi.Imprimir_lista());
 
             aux = aux.getPnext();
@@ -173,7 +175,7 @@ public class ListaElenco {
             lista_completa = "Esta vacia";
         }
         while (actual != null) {
-            lista_completa += actual.getLista().Imprimir_lista() + "," + actual.getID_pelicula() + "\n";
+            lista_completa += actual.getLista().Imprimir_lista() + "," + actual.getID_pelicula() + ","+actual.getPos()+"\n";
             actual = actual.getPnext();
 
         }

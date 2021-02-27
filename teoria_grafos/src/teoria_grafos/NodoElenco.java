@@ -13,9 +13,11 @@ public class NodoElenco {
     private NodoElenco pnext;
     private ListaAuxiliar lista;
     private int ID_pelicula;
-    public NodoElenco(ListaAuxiliar Lista,int ID){
+    private int Pos;
+    public NodoElenco(ListaAuxiliar Lista,int ID,int Pos){
         this.lista=Lista;
         this.ID_pelicula=ID;
+        this.Pos=Pos;
         
     }
 
@@ -59,6 +61,20 @@ public class NodoElenco {
      */
     public void setID_pelicula(int ID_pelicula) {
         this.ID_pelicula = ID_pelicula;
+    }
+
+    /**
+     * @return the Pos
+     */
+    public int getPos() {
+        return Pos;
+    }
+
+    /**
+     * @param Pos the Pos to set
+     */
+    public void setPos(int Pos) {
+        this.Pos = Pos;
     }
     
 }
