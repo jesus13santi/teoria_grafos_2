@@ -66,6 +66,16 @@ public class ListaElenco {
     public boolean esVacio() {
         return first == null;
     }
+    
+    public void Insertar_principio(NodoElenco nuevo){
+        if(esVacio()){
+            first = last = nuevo;
+        } else {
+            nuevo.setPnext(first);
+            first = nuevo;
+        }
+        tamano++;
+    }
 
     public void Insertar_final(ListaAuxiliar lista, int ID_pelicula) {
         NodoElenco nuevo = new NodoElenco(lista, ID_pelicula);
@@ -105,6 +115,47 @@ public class ListaElenco {
         //System.out.println(elenco_2.Imprimir_lista());
         return elenco_2;
     }
+    
+    public NodoElenco getAnterior(NodoElenco ne){
+        NodoElenco aux = first;
+        NodoElenco ant = first;
+        
+        if(aux == ne){
+            return null;
+        }else{
+            while(aux != null){
+                aux = aux.getPnext();
+                if(aux==ne){
+                    return ant;
+                } else{
+                    ant = ant.getPnext();
+                }
+            }
+        }
+        return null;
+    }
+    
+    public void eliminarNodo(NodoElenco ne){
+        NodoElenco n = first;
+        if(!esVacio() && ne != null){
+            if(first == ne && last == ne){
+                first = last = null;
+            } else if (first == ne){
+                first = ne.getPnext();
+                ne.setPnext(null);
+            } else if (last == ne){
+                getAnterior(ne).setPnext(null);
+            } else {
+                while(n != null){
+                    if(ne == n){
+                        NodoElenco aux = getAnterior(ne);
+                        aux.setPnext(ne.getPnext());
+                    }
+                }
+            }
+            tamano--;
+        }
+    }
 
     public String Imprimir_lista() {
         String lista_completa = "";
@@ -120,6 +171,28 @@ public class ListaElenco {
         //System.out.println(lista_completa);
         return lista_completa;
 
+    }
+    
+    public boolean existe(NodoElenco ne){
+        NodoElenco aux = this.first;
+        while(aux != null){
+            if(aux.getID_pelicula() == ne.getID_pelicula()){
+                return true;
+            }
+            aux = aux.getPnext();
+        }
+        return false;
+    }
+    
+    public void eliminarRepetidos(){
+        if(!this.esVacio()){
+            NodoElenco ne = this.first;
+            this.eliminarNodo(last);
+            this.eliminarRepetidos();
+            if(!existe(ne)){
+                this.Insertar_principio(ne);
+            }
+        }
     }
 
 }
