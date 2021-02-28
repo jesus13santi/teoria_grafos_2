@@ -259,16 +259,15 @@ public class ListaElenco {
         }
     }
     
-    public String buscarElenco(int idp){
+    public String buscarElenco(int idp, Lista lista){
         NodoElenco aux = first;
         String regresa = "No existe una película con ese id.";
         while(aux != null){
             if(aux.getID_pelicula()==idp){
-                regresa = aux.getLista().Imprimir_lista();
+                regresa = aux.getLista().imprimir_lista_nombres(lista);
             }
             aux = aux.getPnext();
         }
         return regresa;
     }
-
 }

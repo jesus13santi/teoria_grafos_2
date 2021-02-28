@@ -562,7 +562,7 @@ public class Interfaz extends javax.swing.JFrame {
                 elenco=elenco.elenco(relacion);
                 elenco.EliminarRepetidos();
                 elenco.asignarPosicion();
-                JOptionPane.showMessageDialog(null, "Elenco de "+np+": \n"+elenco.buscarElenco(id));
+                JOptionPane.showMessageDialog(null, "Elenco de "+np+": \n"+elenco.buscarElenco(id, actores));
             }
         }
     }//GEN-LAST:event_jButton8ActionPerformed

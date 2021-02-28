@@ -69,9 +69,25 @@ public class Lista {
         }else{
             aux=first;
             while(aux!=null){
-                aux = proximo(aux);
+                aux = aux.getPnext();
             }
         }
+    }
+    
+    public String buscar_nombre(int id){
+        Nodo aux = first;
+        String nombre_actor = "";
+        if(esVacio()){
+            System.out.println(nombre+" está vacía");
+        }else{
+            while(aux!=null){
+                if(id == aux.getID()){
+                    nombre_actor = aux.getNombre();
+                }
+                aux = aux.getPnext();
+            }
+        }
+        return nombre_actor;
     }
     
     public Nodo ultimo(){
