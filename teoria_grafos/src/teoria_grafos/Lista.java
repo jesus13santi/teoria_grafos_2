@@ -10,82 +10,83 @@ package teoria_grafos;
  * @author Usuario
  */
 public class Lista {
+
     private Nodo first;
     private String nombre;
     private int tamano;
     private Nodo last;
-    
-    public Lista(){
+
+    public Lista() {
         this.first = null;
         //this.nombre = nombre_lista;
         this.tamano = 0;
-        this.last=null;
+        this.last = null;
     }
-    
-    public void setPrimero(Nodo Point){
+
+    public void setPrimero(Nodo Point) {
         this.first = Point;
     }
-   
-    
-    public int length(){
+
+    public int length() {
         return tamano;
     }
-    
-    public boolean esVacio(){
-        return first==null;
+
+    public boolean esVacio() {
+        return first == null;
     }
-    
-    public Nodo primero(){
+
+    public Nodo primero() {
         return first;
     }
-    
-    public Nodo proximo(Nodo valor){
-        if(valor != null){
+
+    public Nodo proximo(Nodo valor) {
+        if (valor != null) {
             valor = valor.getPnext();
             return valor;
-        }else{
+        } else {
             return null;
         }
     }
-    
-    public int leer_id(Nodo valor){
+
+    public int leer_id(Nodo valor) {
         return valor.getID();
     }
-    
-    public int leer_anio(Nodo valor){
+
+    public int leer_anio(Nodo valor) {
         return valor.getAnio();
     }
-    
-    public String leer_nombre(Nodo valor){
+
+    public String leer_nombre(Nodo valor) {
         return valor.getNombre();
     }
-    
-    public void recorrer(){
+
+    public void recorrer() {
         Nodo aux;
-        if(esVacio()){
-            System.out.println(nombre +" está vacía");
-        }else{
-            aux=first;
-            while(aux!=null){
+        if (esVacio()) {
+            System.out.println(nombre + " está vacía");
+        } else {
+            aux = first;
+            while (aux != null) {
                 aux = proximo(aux);
             }
         }
     }
-    
-    public Nodo ultimo(){
+
+    public Nodo ultimo() {
         Nodo aux;
-        if(esVacio()){
+        if (esVacio()) {
             return null;
-        }else{
-            aux=first;
-            while(aux.getPnext()!=null){
+        } else {
+            aux = first;
+            while (aux.getPnext() != null) {
                 aux = proximo(aux);
             }
             return aux;
         }
     }
-    public void Insertar_final( int ID, String Nombre, int anio) {
-        Nodo nuevo = new Nodo(Nombre,ID,anio);
+
+    public void Insertar_final(int ID, String Nombre, int anio) {
+        Nodo nuevo = new Nodo(Nombre, ID, anio);
         if (esVacio()) {
             first = last = nuevo;
         } else {
@@ -95,15 +96,15 @@ public class Lista {
         }
         tamano++;
     }
-    
+
     public String Imprimir_lista() {
         String lista_completa = "";
         Nodo actual = first;
-        if(actual==null){
-            lista_completa="Esta vacia";
+        if (actual == null) {
+            lista_completa = "Esta vacia";
         }
         while (actual != null) {
-            lista_completa += actual.getID()+","+actual.getNombre()+","+actual.getAnio() + "\n";
+            lista_completa += actual.getID() + "," + actual.getNombre() + "," + actual.getAnio() + "\n";
             actual = actual.getPnext();
 
         }
@@ -111,4 +112,71 @@ public class Lista {
         return lista_completa;
 
     }
+
+    public boolean existe(String ID) {
+        Nodo aux = this.first;
+        while (aux != null) {
+            if (aux.getNombre() == ID) {
+                return true;
+            }
+            aux = aux.getPnext();
+        }
+        return false;
+    }
+
+    public void buscar_elemento(int ID, ListaRelacion lista) {
+        NodoRelacion aux = lista.getFirst();
+        //Nodo ant=first;
+        //Nodo aux2= lista_pelicula.primero();
+        int listaPeli[];
+
+        for (int i = 0; aux != null; i++) {
+            if (aux.getID_actor() == ID) {
+
+            }
+
+        }
+        
+
+   
+
 }
+public ListaAuxiliar Peliculas_listas(int ID,ListaRelacion ele,Lista pelicula) {
+        ListaAuxiliar a = new ListaAuxiliar();
+        Nodo peli_aux=pelicula.primero();
+        NodoRelacion aux = ele.getFirst();
+        //NodoRelacion ant = ele.getFirst();
+        int id=0;
+        while (aux != null) {
+            String peli="";
+            if(aux.getID_actor()==ID){
+                id=aux.getID_pelicula();
+                
+                while(peli_aux!=null){
+                    if(peli_aux.getID()==id){
+                        peli=peli_aux.getNombre();
+                        a.Insertar_final_2(peli);
+                    }
+                    peli_aux=peli_aux.getPnext();
+                }
+                
+            }
+            
+           
+            
+           
+            //System.out.println(auxi.Imprimir_lista());
+
+            aux = aux.getPnext();
+
+        }
+        
+        
+        return a;
+    }    
+}
+  
+      
+        
+    
+
