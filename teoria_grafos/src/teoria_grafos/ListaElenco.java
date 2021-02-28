@@ -107,8 +107,8 @@ public class ListaElenco {
                 ant = ant.getPnext();
 
             }
-            pos=pos+1;
             elenco_2.Insertar_final(auxi, aux.getID_pelicula(),pos);
+            pos=pos+1;
             //System.out.println(auxi.Imprimir_lista());
 
             aux = aux.getPnext();
@@ -203,20 +203,22 @@ public class ListaElenco {
                     } else {
                         Anterior(ant).setPnext(ant.getPnext());
                         setTamano(getTamano() - 1);
-
                     }
-
                 }
                 ant = ant.getPnext();
-
             }
             aux=aux.getPnext();
-            
-
         }
-
-        
-
+    }
+    
+    public void asignarPosicion(){
+        int cuenta = 0;
+        NodoElenco aux = first;
+        while(aux != null){
+            aux.setPos(cuenta);
+            cuenta++;
+            aux = aux.getPnext();
+        }
     }
 
     public String Imprimir_lista() {
