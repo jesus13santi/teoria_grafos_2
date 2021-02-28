@@ -5,6 +5,8 @@
  */
 package teoria_grafos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -110,5 +112,22 @@ public class Lista {
         //System.out.println(lista_completa);
         return lista_completa;
 
+    }
+    
+    public int encontrarId(String n){
+        Nodo aux;
+        int id = 0;
+        if(esVacio()){
+            System.out.println(nombre +" está vacía");
+        }else{
+            aux=first;
+            while(aux!=null){
+                if(aux.getNombre().equals('"'+n+'"')){
+                    id = aux.getID();
+                }
+                aux = aux.getPnext();
+            }
+        }
+        return id;
     }
 }

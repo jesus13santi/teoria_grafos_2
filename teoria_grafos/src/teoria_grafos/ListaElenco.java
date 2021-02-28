@@ -5,6 +5,8 @@
  */
 package teoria_grafos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jrios

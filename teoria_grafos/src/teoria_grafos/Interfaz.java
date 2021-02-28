@@ -552,16 +552,17 @@ public class Interfaz extends javax.swing.JFrame {
         if(jTextField8.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Debe ingresar un valor");
         } else {
-            int idp = Integer.parseInt(jTextField8.getText());
+            String np = jTextField8.getText();
             if(jTextField4.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "No se han ingresado archivos para buscar.");
+            } else {
+                int id = peliculas.encontrarId(np);
                 ListaElenco elenco= new ListaElenco();
                 //elenco.Insertar_final(relacion, 0);
                 elenco=elenco.elenco(relacion);
                 elenco.EliminarRepetidos();
                 elenco.asignarPosicion();
-                JOptionPane.showMessageDialog(null, elenco.buscarElenco(idp));
-            } else {
-                JOptionPane.showMessageDialog(null, "No se han ingresado archivos para buscar.");
+                JOptionPane.showMessageDialog(null, "Elenco de "+np+": \n"+elenco.buscarElenco(id));
             }
         }
     }//GEN-LAST:event_jButton8ActionPerformed
