@@ -5,6 +5,8 @@
  */
 package teoria_grafos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -113,67 +115,73 @@ public class Lista {
 
     }
 
-    public boolean existe(String ID) {
+    public boolean existe(String n) {
         Nodo aux = this.first;
+        boolean a=false;
         while (aux != null) {
-            if (aux.getNombre() == ID) {
-                return true;
+            if (aux.getNombre().equals('"'+n+'"') ) {
+                a=true;
             }
             aux = aux.getPnext();
         }
-        return false;
+        return a;
     }
 
-    public void buscar_elemento(int ID, ListaRelacion lista) {
-        NodoRelacion aux = lista.getFirst();
-        //Nodo ant=first;
-        //Nodo aux2= lista_pelicula.primero();
-        int listaPeli[];
+    
 
-        for (int i = 0; aux != null; i++) {
-            if (aux.getID_actor() == ID) {
-
-            }
-
-        }
-        
-
-   
-
-}
-public ListaAuxiliar Peliculas_listas(int ID,ListaRelacion ele,Lista pelicula) {
-        ListaAuxiliar a = new ListaAuxiliar();
-        Nodo peli_aux=pelicula.primero();
-        NodoRelacion aux = ele.getFirst();
-        //NodoRelacion ant = ele.getFirst();
-        int id=0;
-        while (aux != null) {
-            String peli="";
-            if(aux.getID_actor()==ID){
-                id=aux.getID_pelicula();
-                
-                while(peli_aux!=null){
-                    if(peli_aux.getID()==id){
-                        peli=peli_aux.getNombre();
-                        a.Insertar_final_2(peli);
-                    }
-                    peli_aux=peli_aux.getPnext();
+    
+    public int encontrarId(String n){
+        Nodo aux;
+        int id = 0;
+        if(esVacio()){
+            System.out.println(nombre +" está vacía");
+        }else{
+            aux=first;
+            while(aux!=null){
+                if(aux.getNombre().equals('"'+n+'"')){
+                    id = aux.getID();
                 }
+                aux = aux.getPnext();
+            }
+        }
+        //System.out.println(id);
+        return id;
+    }
+    public ListaAuxiliar Encontrar_peliculas(int ID,ListaRelacion ele){
+        ListaAuxiliar peliculas=new ListaAuxiliar();
+        NodoRelacion aux = ele.getFirst();
+        while(aux!=null){
+            if (aux.getID_actor()==ID) {
+                peliculas.Insertar_final(aux.getID_pelicula());
+                              
+            }
+            aux=aux.getPnext();
+        }
+        //System.out.println(peliculas.Imprimir_lista());
+        return peliculas;
+    }
+    public ListaAuxiliar Converit_int(ListaAuxiliar ele, Lista peliculas){
+        ListaAuxiliar string_peliculas =new ListaAuxiliar();
+        NodoAuxiliar aux=ele.getFirst();
+        Nodo ant =peliculas.primero();
+        while(aux!=null){
+            ant=peliculas.primero();
+            while(ant!=null){
+                if(aux.getID_actor()==ant.getID()){
+                    string_peliculas.Insertar_final_2(ant.getNombre());
+                }
+                ant=ant.getPnext();
                 
             }
-            
-           
-            
-           
-            //System.out.println(auxi.Imprimir_lista());
-
-            aux = aux.getPnext();
-
+            aux=aux.getPnext();
         }
+        System.out.println(string_peliculas.Imprimir_lista2());
+        return string_peliculas;
         
-        
-        return a;
-    }    
+    }
+    
+
+
 }
   
       

@@ -12,6 +12,7 @@ package teoria_grafos;
 public class NodoAuxiliar {
     private NodoAuxiliar pnext;
     private int ID_actor;
+    private String Nombre;
     
 
     
@@ -19,6 +20,13 @@ public class NodoAuxiliar {
     public NodoAuxiliar(int ID_actor){
         this.pnext=null;
         this.ID_actor = ID_actor;
+       
+        
+        
+    }
+    public NodoAuxiliar(String Nombre){
+        this.pnext=null;
+        this.Nombre = Nombre;
        
         
         
@@ -50,5 +58,19 @@ public class NodoAuxiliar {
      */
     public void setID_actor(int ID_actor) {
         this.ID_actor = ID_actor;
+    }
+
+    /**
+     * @return the Nombre
+     */
+    public String getNombre() {
+        return Nombre;
+    }
+
+    /**
+     * @param Nombre the Nombre to set
+     */
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 }

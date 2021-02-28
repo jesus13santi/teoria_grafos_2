@@ -545,10 +545,53 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        if(jTextField6.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un valor");
+        } else {
+            String np = jTextField6.getText();
+            if(jTextField6.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "No se han ingresado archivos para buscar.");
+            } else {
+                if(actores.existe(np)){
+                    int id = actores.encontrarId(np);
+                ListaAuxiliar listaAux =new ListaAuxiliar();
+                ListaAuxiliar Aux =new ListaAuxiliar();
+                
+                listaAux= actores.Encontrar_peliculas(id, relacion);
+                Aux=actores.Converit_int(listaAux, peliculas);
+                JOptionPane.showMessageDialog(null, "El actor "+np+" actuo en las peliculas:"+" \n"+ actores.Converit_int(listaAux, peliculas).Imprimir_lista2());
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "El actor que busca no exite en el repositorio.");
+                }
+                
+                
+                
+                //JOptionPane.showMessageDialog(null, "Elenco de "+np+": \n"+elenco.buscarElenco(id));
+            }
+        }
+                                           
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        if(jTextField8.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un valor");
+        } else {
+            String np = jTextField8.getText();
+            if(jTextField4.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "No se han ingresado archivos para buscar.");
+            } else {
+                int id = peliculas.encontrarId(np);
+                ListaElenco elenco= new ListaElenco();
+                //elenco.Insertar_final(relacion, 0);
+                elenco=elenco.elenco(relacion);
+                elenco.EliminarRepetidos();
+                elenco.asignarPosicion();
+                JOptionPane.showMessageDialog(null, "Elenco de "+np+": \n"+elenco.buscarElenco(id));
+            }
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
