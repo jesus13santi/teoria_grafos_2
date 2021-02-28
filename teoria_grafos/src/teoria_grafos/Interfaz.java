@@ -549,6 +549,21 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        if(jTextField8.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un valor");
+        } else {
+            int idp = Integer.parseInt(jTextField8.getText());
+            if(jTextField4.getText().equals("")){
+                ListaElenco elenco= new ListaElenco();
+                //elenco.Insertar_final(relacion, 0);
+                elenco=elenco.elenco(relacion);
+                elenco.EliminarRepetidos();
+                elenco.asignarPosicion();
+                JOptionPane.showMessageDialog(null, elenco.buscarElenco(idp));
+            } else {
+                JOptionPane.showMessageDialog(null, "No se han ingresado archivos para buscar.");
+            }
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed

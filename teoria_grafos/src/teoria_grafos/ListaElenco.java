@@ -230,11 +230,9 @@ public class ListaElenco {
         while (actual != null) {
             lista_completa += actual.getLista().Imprimir_lista() + "," + actual.getID_pelicula() + ","+actual.getPos()+"\n";
             actual = actual.getPnext();
-
         }
         //System.out.println(lista_completa);
         return lista_completa;
-
     }
     
     public boolean existe(NodoElenco ne){
@@ -257,6 +255,18 @@ public class ListaElenco {
                 this.Insertar_principio(ne);
             }
         }
+    }
+    
+    public String buscarElenco(int idp){
+        NodoElenco aux = first;
+        String regresa = "No existe una película con ese id.";
+        while(aux != null){
+            if(aux.getID_pelicula()==idp){
+                regresa = aux.getLista().Imprimir_lista();
+            }
+            aux = aux.getPnext();
+        }
+        return regresa;
     }
 
 }
