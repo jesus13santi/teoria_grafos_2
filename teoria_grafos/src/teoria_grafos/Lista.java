@@ -64,17 +64,33 @@ public class Lista {
 
     public void recorrer() {
         Nodo aux;
-        if (esVacio()) {
-            System.out.println(nombre + " está vacía");
-        } else {
-            aux = first;
-            while (aux != null) {
-                aux = proximo(aux);
+        if(esVacio()){
+            System.out.println(nombre +" está vacía");
+        }else{
+            aux=first;
+            while(aux!=null){
+                aux = aux.getPnext();
             }
         }
     }
-
-    public Nodo ultimo() {
+    
+    public String buscar_nombre(int id){
+        Nodo aux = first;
+        String nombre_actor = "";
+        if(esVacio()){
+            System.out.println(nombre+" está vacía");
+        }else{
+            while(aux!=null){
+                if(id == aux.getID()){
+                    nombre_actor = aux.getNombre();
+                }
+                aux = aux.getPnext();
+            }
+        }
+        return nombre_actor;
+    }
+    
+    public Nodo ultimo(){
         Nodo aux;
         if (esVacio()) {
             return null;

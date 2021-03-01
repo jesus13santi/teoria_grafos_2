@@ -101,7 +101,6 @@ public class ListaAuxiliar {
         }
         //System.out.println(lista_completa);
         return lista_completa;
-
     }
     public String Imprimir_lista2() {
         String lista_completa = "";
@@ -118,6 +117,21 @@ public class ListaAuxiliar {
         return lista_completa;
 
     }
+    
+    public String imprimir_lista_nombres(Lista actores){
+        String lista_completa = "";
+        NodoAuxiliar actual = first;
+        if(actual == null){
+            lista_completa = "Está vacía";
+        }else{
+            while(actual!=null){
+                lista_completa += actores.buscar_nombre(actual.getID_actor())+"\n";
+                actual = actual.getPnext();
+            }
+        }
+        return lista_completa;
+    }
+    
     public void Vaciar() {
         first = last = null;
         tamano = 0;
