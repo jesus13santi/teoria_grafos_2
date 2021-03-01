@@ -12,57 +12,57 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class Lista {
+
     private Nodo first;
     private String nombre;
     private int tamano;
     private Nodo last;
-    
-    public Lista(){
+
+    public Lista() {
         this.first = null;
         //this.nombre = nombre_lista;
         this.tamano = 0;
-        this.last=null;
+        this.last = null;
     }
-    
-    public void setPrimero(Nodo Point){
+
+    public void setPrimero(Nodo Point) {
         this.first = Point;
     }
-   
-    
-    public int length(){
+
+    public int length() {
         return tamano;
     }
-    
-    public boolean esVacio(){
-        return first==null;
+
+    public boolean esVacio() {
+        return first == null;
     }
-    
-    public Nodo primero(){
+
+    public Nodo primero() {
         return first;
     }
-    
-    public Nodo proximo(Nodo valor){
-        if(valor != null){
+
+    public Nodo proximo(Nodo valor) {
+        if (valor != null) {
             valor = valor.getPnext();
             return valor;
-        }else{
+        } else {
             return null;
         }
     }
-    
-    public int leer_id(Nodo valor){
+
+    public int leer_id(Nodo valor) {
         return valor.getID();
     }
-    
-    public int leer_anio(Nodo valor){
+
+    public int leer_anio(Nodo valor) {
         return valor.getAnio();
     }
-    
-    public String leer_nombre(Nodo valor){
+
+    public String leer_nombre(Nodo valor) {
         return valor.getNombre();
     }
-    
-    public void recorrer(){
+
+    public void recorrer() {
         Nodo aux;
         if(esVacio()){
             System.out.println(nombre +" está vacía");
@@ -92,18 +92,19 @@ public class Lista {
     
     public Nodo ultimo(){
         Nodo aux;
-        if(esVacio()){
+        if (esVacio()) {
             return null;
-        }else{
-            aux=first;
-            while(aux.getPnext()!=null){
+        } else {
+            aux = first;
+            while (aux.getPnext() != null) {
                 aux = proximo(aux);
             }
             return aux;
         }
     }
-    public void Insertar_final( int ID, String Nombre, int anio) {
-        Nodo nuevo = new Nodo(Nombre,ID,anio);
+
+    public void Insertar_final(int ID, String Nombre, int anio) {
+        Nodo nuevo = new Nodo(Nombre, ID, anio);
         if (esVacio()) {
             first = last = nuevo;
         } else {
@@ -113,15 +114,15 @@ public class Lista {
         }
         tamano++;
     }
-    
+
     public String Imprimir_lista() {
         String lista_completa = "";
         Nodo actual = first;
-        if(actual==null){
-            lista_completa="Esta vacia";
+        if (actual == null) {
+            lista_completa = "Esta vacia";
         }
         while (actual != null) {
-            lista_completa += actual.getID()+","+actual.getNombre()+","+actual.getAnio() + "\n";
+            lista_completa += actual.getID() + "," + actual.getNombre() + "," + actual.getAnio() + "\n";
             actual = actual.getPnext();
 
         }
@@ -129,6 +130,21 @@ public class Lista {
         return lista_completa;
 
     }
+
+    public boolean existe(String n) {
+        Nodo aux = this.first;
+        boolean a=false;
+        while (aux != null) {
+            if (aux.getNombre().equals('"'+n+'"') ) {
+                a=true;
+            }
+            aux = aux.getPnext();
+        }
+        return a;
+    }
+
+    
+
     
     public int encontrarId(String n){
         Nodo aux;
@@ -144,6 +160,47 @@ public class Lista {
                 aux = aux.getPnext();
             }
         }
+        //System.out.println(id);
         return id;
     }
+    public ListaAuxiliar Encontrar_peliculas(int ID,ListaRelacion ele){
+        ListaAuxiliar peliculas=new ListaAuxiliar();
+        NodoRelacion aux = ele.getFirst();
+        while(aux!=null){
+            if (aux.getID_actor()==ID) {
+                peliculas.Insertar_final(aux.getID_pelicula());
+                              
+            }
+            aux=aux.getPnext();
+        }
+        //System.out.println(peliculas.Imprimir_lista());
+        return peliculas;
+    }
+    public ListaAuxiliar Converit_int(ListaAuxiliar ele, Lista peliculas){
+        ListaAuxiliar string_peliculas =new ListaAuxiliar();
+        NodoAuxiliar aux=ele.getFirst();
+        Nodo ant =peliculas.primero();
+        while(aux!=null){
+            ant=peliculas.primero();
+            while(ant!=null){
+                if(aux.getID_actor()==ant.getID()){
+                    string_peliculas.Insertar_final_2(ant.getNombre());
+                }
+                ant=ant.getPnext();
+                
+            }
+            aux=aux.getPnext();
+        }
+        System.out.println(string_peliculas.Imprimir_lista2());
+        return string_peliculas;
+        
+    }
+    
+
+
 }
+  
+      
+        
+    
+

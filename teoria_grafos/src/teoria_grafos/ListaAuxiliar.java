@@ -76,6 +76,17 @@ public class ListaAuxiliar {
         }
         tamano++;
     }
+    public void Insertar_final_2(String ID_actor) {
+        NodoAuxiliar nuevo = new NodoAuxiliar(ID_actor);
+        if (esVacio()) {
+            first = last = nuevo;
+        } else {
+            
+            last.setPnext(nuevo);
+            last = nuevo;
+        }
+        tamano++;
+    }
 
     public String Imprimir_lista() {
         String lista_completa = "";
@@ -90,6 +101,21 @@ public class ListaAuxiliar {
         }
         //System.out.println(lista_completa);
         return lista_completa;
+    }
+    public String Imprimir_lista2() {
+        String lista_completa = "";
+        NodoAuxiliar actual = first;
+        if (actual == null) {
+            lista_completa = "Esta vacia";
+        }
+        while (actual != null) {
+            lista_completa += actual.getNombre() + "\n";
+            actual = actual.getPnext();
+
+        }
+        //System.out.println(lista_completa);
+        return lista_completa;
+
     }
     
     public String imprimir_lista_nombres(Lista actores){
