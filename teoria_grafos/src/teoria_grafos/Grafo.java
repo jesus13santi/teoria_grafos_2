@@ -50,13 +50,15 @@ public class Grafo {
         }
     }
     
-    public void imprimir(){
+    public String imprimir(){
+        String matriz_completa = "";
         for(int i=0; i< size; i++){
             for(int j=0; j< size; j++){
-                System.out.print( matrizAdyacencia[i][j] + "  " );        
+                matriz_completa += matrizAdyacencia[i][j] + "  ";        
             }
-            System.out.println();
-        }  
+            matriz_completa += "\n";
+        }
+        return matriz_completa;
     }
 }
 
